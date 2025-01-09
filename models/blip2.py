@@ -30,7 +30,7 @@ class EvalModel(BaseEvalModel):
         self.device = model_args["device"] if model_args["device"] >= 0 else "cpu"
         self.processor = Blip2Processor.from_pretrained(model_args["processor_path"])
         self.model = Blip2ForConditionalGeneration.from_pretrained(
-            model_args["lm_path"]
+            model_args["lm_path"],  device_map="auto", load_in_8bit=True
         )
         self.tokenizer = self.processor.tokenizer
         self.model.to(self.device)
