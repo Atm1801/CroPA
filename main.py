@@ -441,7 +441,7 @@ if __name__=="__main__":
     if config_args.device >= 0:
         print("use specified gpu",config_args.device)
     else:
-        config_args.device= get_available_gpus(45000)[0]
+        config_args.device= get_available_gpus(15000)[0]
     device= f"cuda:{ config_args.device}"
     eval_model = load_model(config_args.device,module,config_args.model_name)
     train_dataset, test_dataset = load_datasets(config_args)
